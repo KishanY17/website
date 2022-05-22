@@ -1,3 +1,4 @@
+const ROOT = '/website'; // https://github.com/COMP501-1107/website
 document.addEventListener('DOMContentLoaded', function () {
 	document.querySelector('nav').innerHTML = [
 		['index.html', 'Home page'],
@@ -11,18 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		['misc/team-formation.html', 'Team Formation'],
 		['misc/rubric.html', 'Assessment Rubric'],
 		['misc/portfolio.html', 'Project Portfolio'],
-	].map(([link, text]) => {
-		if (!location.pathname.includes('index')) {
-			if (link.includes('index'))
-				link = '../' + link;
-			else
-				link = link.replace('misc/', '');
-		}
-		if (location.pathname.includes(link))
-			return `<li class="active"><b>${text}</b></li>`;
-		else
-			return `<li><a href="${link}">${text}</a></li>`;
-	}).join('\n');
+	].map(([link, text]) => `<li><a href="${ROOT}/${link}">${text}</a></li>`).join('\n');
 	document.querySelector('footer').innerHTML = `
         Group 1107 &ndash; Nate, Kishan, Blake
     `;
